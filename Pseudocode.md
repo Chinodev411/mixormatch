@@ -1,5 +1,9 @@
 //PSEUDOCODE
 
+// Create an array of winning match for the image reveal and name reveal
+//
+
+
 //Name reveal card flip
 //when clicked, name reveal should flip to expose name of young animal
 
