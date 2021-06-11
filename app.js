@@ -1,58 +1,11 @@
-//CACHED DOM ELEMENTS
-
 const card = document.querySelector("section");
+const cardMatch = document.querySelector("#matches")
+//........................................................
 
-const flipCard = document.querySelector("#clickflip");
+// Declare an empty array to hold the result
 
-const flipReveal = document.querySelector("#revealFlip");
-
-// const frogClass = document.querySelector("frog-class");
-//........................................................//
-
-let flip
-
-
-//CREATE AN ARRAY OF MATCHING CARDS
-
-
-// let successMatch = [
-//   [0, 15],
-//   [1, 11],
-//   [2, 10],
-//   [3, 14],
-//   [4, 8],
-//   [5, 9],
-//   [6, 14],
-//   [17, 12],
-//   [13, 16]
-// ]
-
-
- 
-// Declare an empty array to hold the result 
 let matchResults = []
-
-//function for capturing the user click
-
-// const matchClick=()=> {
-// if (successMatch[0] === true);
-// console.log("matched");
-// }
-
-// const matchClick=()=> {
-//   if (frogClass === true)
-//   return "matched";
-// }
-   // if the array has 2 element in it
-       // check to see if the elements are the same 
-           // if they are = its a match
-           // else then flip the cards back over (remove the clicked class)
-    // other wise
-       // get the elements class ("frog") and add it to the array
-
-
-
-
+let currentMatches = 0;
 //DEFINE FUNCTIONS
 
 const handleCardClicked=(e)=> {
@@ -64,12 +17,19 @@ const handleCardClicked=(e)=> {
       //Check to see if there's a match
       if (matchResults[0] === matchResults[1]) {
         setTimeout (() => {
-          alert("it's a match");
+          alert("🔥Success Match!!");
         }, 1000);
+        currentMatches+=1
+        cardMatch.innerText = currentMatches
       }else {
         const clickedElements = document.querySelectorAll(".clicked")
         for ( let element of clickedElements) {
           element.classList.remove("clicked");
+        }
+        if (matchResults[0] !== matchResults[2]) {
+          setTimeout (() => {
+            alert("😋Try Again!!");
+          }, 1000);
         }
       }
       matchResults = []
@@ -85,35 +45,20 @@ const handleCardClicked=(e)=> {
 card.addEventListener("click", handleCardClicked);
 
 
+// TIME COUNTDOWN
+const startingMinutes = 10;
+let time = startingMinutes * 60;
+
+const countdownEl = document.getElementById("#count");
+
+setInterval(updateCountdown, 1000);
+
+function updatedCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+countdownEl.innerHTML = `${minutes}: ${seconds}`;
+time--;
+}
 
 
-
-
-//Increment the match  === Match
-
-//
-
-
-
-
-
-
-
-
-//DOM CARD MATCHING
-
-// const nameFlipFroglet = document.querySelector("#nameflipfroglet");
-
-// const imageRevealFrog = document.querySelector("#imagerevealfrog");
-
-// console.log(nameFlipFroglet);
-
-//FUNCS
-
-// const onClickFlip = () => {
-//   console.log(flipReveal);
-// }
-
-// flipCard.addEventListener("click", onClickFlip);
-
-//ARRAY
